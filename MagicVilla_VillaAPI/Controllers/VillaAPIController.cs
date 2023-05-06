@@ -20,6 +20,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<IEnumerable<VillaDTO>> GetVillas()
         {
+            Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:3000");
             _logger.Log("Getting all villas", "");
             return Ok(_db.Villas.ToList());
         }
@@ -30,6 +31,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<VillaDTO> GetVilla(int id)
         {
+            Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:3000");
             if (id == 0)
             {
                 _logger.Log("Get Villa Error with Id " + id, "error");
@@ -54,6 +56,7 @@ namespace MagicVilla_VillaAPI.Controllers
             //{
             //    return BadRequest(ModelState);
             //}
+            Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:3000");
             if (_db.Villas.FirstOrDefault(u => u.Name.ToLower() == villaDTO.Name.ToLower()) != null)
             {
                 ModelState.AddModelError("CustomError", "Villa already exists.");
@@ -91,6 +94,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult DeleteVilla(int id)
         {
+            Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:3000");
             if (id == 0)
             {
                 return BadRequest();
@@ -110,6 +114,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult UpdateVilla(int id, [FromBody] VillaDTO villaDTO)
         {
+            Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:3000");
             if (villaDTO == null || id != villaDTO.Id)
             {
                 return BadRequest();
@@ -134,6 +139,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult UpdatePartialVilla(int id, JsonPatchDocument<VillaDTO> patchDTO)
         {
+            Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:3000");
             if (patchDTO == null || id == 0)
             {
                 return BadRequest();

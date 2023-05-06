@@ -2,16 +2,26 @@
 global using MagicVilla_VillaAPI.Data;
 global using MagicVilla_VillaAPI.Logging;
 global using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 //Use the below to log actions using Serilog
 //Log.Logger = new LoggerConfiguration().MinimumLevel.Debug()
 // .WriteTo.File("log/villaLogs.txt", rollingInterval: RollingInterval.Day).CreateLogger();
 //builder.Host.UseSerilog();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", builder =>
+    {
+        builder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowCredentials()
+            .WithHeaders("Access-Control-Allow-Origin");
+    });
+});
 
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
@@ -36,10 +46,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
+
+app.UseCors("AllowReactApp");
+
