@@ -3,7 +3,15 @@ import "./styles/createPage.css";
 import VillaService from "../services/villaService";
 
 function CreateVilla() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    details: "",
+    rate: 0,
+    occupancy: 0,
+    sqft: 0,
+    imageUrl: "",
+    amenity: "",
+  });
   const villaService = new VillaService();
 
   function handleInputChange(e) {
@@ -14,10 +22,10 @@ function CreateVilla() {
     }));
   }
 
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
     await villaService.createVilla(formData);
-  };
+  }
 
   return (
     <div className="container">
@@ -33,7 +41,7 @@ function CreateVilla() {
                 id="nameInput"
                 name="name"
                 value={formData.name}
-                onBlur={handleInputChange}
+                onChange={handleInputChange}
               />
             </div>
             <div className="form-group">
@@ -44,7 +52,7 @@ function CreateVilla() {
                 rows="3"
                 name="details"
                 value={formData.details}
-                onBlur={handleInputChange}
+                onChange={handleInputChange}
               ></textarea>
             </div>
             <div className="form-group">
@@ -55,7 +63,7 @@ function CreateVilla() {
                 id="rateInput"
                 name="rate"
                 value={formData.rate}
-                onBlur={handleInputChange}
+                onChange={handleInputChange}
               />
             </div>
             <div className="form-group">
@@ -66,7 +74,7 @@ function CreateVilla() {
                 id="occupancyInput"
                 name="occupancy"
                 value={formData.occupancy}
-                onBlur={handleInputChange}
+                onChange={handleInputChange}
               />
             </div>
             <div className="form-group">
@@ -77,7 +85,7 @@ function CreateVilla() {
                 id="sqftInput"
                 name="sqft"
                 value={formData.sqft}
-                onBlur={handleInputChange}
+                onChange={handleInputChange}
               />
             </div>
             <div className="form-group">
@@ -88,7 +96,7 @@ function CreateVilla() {
                 id="imageInput"
                 name="imageUrl"
                 value={formData.imageUrl}
-                onBlur={handleInputChange}
+                onChange={handleInputChange}
               />
             </div>
             <div className="form-group">
@@ -99,7 +107,7 @@ function CreateVilla() {
                 id="amenityInput"
                 name="amenity"
                 value={formData.amenity}
-                onBlur={handleInputChange}
+                onChange={handleInputChange}
               />
             </div>
             <button type="submit" className="btn btn-primary create-button">

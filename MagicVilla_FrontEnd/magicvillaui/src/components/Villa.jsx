@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./styles/villa.css";
 
-function Villa({ props: villa }) {
+function Villa({ villa, onDelete }) {
   const [showModal, setShowModal] = useState(false);
   const handleReadMoreClick = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
@@ -35,7 +35,11 @@ function Villa({ props: villa }) {
             <Button variant="outline-info" size="sm">
               Edit
             </Button>
-            <Button variant="outline-danger" size="sm">
+            <Button
+              onClick={() => onDelete(villa.id)}
+              variant="outline-danger"
+              size="sm"
+            >
               Delete
             </Button>
           </div>

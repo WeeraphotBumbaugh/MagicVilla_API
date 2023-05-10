@@ -95,6 +95,8 @@ namespace MagicVilla_VillaAPI.Controllers
         public IActionResult DeleteVilla(int id)
         {
             Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:3000");
+            Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, DELETE");
+            Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type");
             if (id == 0)
             {
                 return BadRequest();
