@@ -14,9 +14,9 @@ function Home() {
             platform for browsing and managing a catalog of high-end villas.
             Whether you're a prospective guest looking for the perfect vacation
             rental or a homeowner seeking to list and manage your property, our
-            easy-to-use CRUD operations make it simple to find and book your
-            ideal villa. Explore our collection of stunning properties today and
-            experience the ultimate in luxury vacation rentals.
+            easy-to-use CRUD operations make it simple to find, create, or edit
+            your ideal villa. Explore our collection of stunning properties
+            today and experience the ultimate in luxury vacation rentals.
           </p>
           <div className="d-flex flex-column flex-lg-row">
             <Link

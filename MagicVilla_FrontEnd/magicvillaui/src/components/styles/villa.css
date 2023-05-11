@@ -1,7 +1,7 @@
 .villacard {
   position: relative;
   margin: 10px;
-  max-width: 300px;
+  max-width: 320px;
   height: 600px;
   border: 2px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -54,8 +54,9 @@
 }
 
 .villacard button {
-  margin: 0 5px;
+  margin: 0 4px;
   border-radius: 20px;
+  font-size: 15px;
 }
 
 .villacard button:hover {
@@ -78,4 +79,8 @@
   width: 100%;
   min-height: 300px;
   margin-bottom: 10px;
+}
+.no-link {
+  text-decoration: none;
+  color: rgb(105, 212, 247);
 }

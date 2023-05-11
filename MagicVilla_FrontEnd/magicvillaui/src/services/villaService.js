@@ -12,6 +12,22 @@ class VillaService {
     let resp = await axios.post(url, villaData);
     return resp.data;
   }
+  async editVilla(id, data) {
+    let resp = await axios.put(`${url}/${id}`, data);
+    return resp.data;
+  }
+  async patchVilla(id, field, value) {
+    const patchPayload = [
+      {
+        operationType: "replace",
+        path: field,
+        op: "replace",
+        value: value,
+      },
+    ];
+    let resp = await axios.patch(`${url}/${id}`, patchPayload);
+    return resp.data;
+  }
   async deleteVilla(id) {
     let resp = await axios.delete(`${url}/${id}`);
     return resp.data;
